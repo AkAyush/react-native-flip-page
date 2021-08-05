@@ -2,7 +2,6 @@ import React from 'react';
 import {
   PanResponder,
   View,
-  StyleSheet,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
@@ -40,6 +39,13 @@ class FlipPage extends React.Component {
       onPanResponderMove: this.handlePanResponderMove.bind(this),
       onPanResponderRelease: this.handlePanResponderStop.bind(this),
     });
+  }
+ 
+
+  componentWillReceiveProps(props, state){
+    if(props.page != this.state.page){
+      this.setState({page:props.page})
+    }
   }
 
   lastPage() {
